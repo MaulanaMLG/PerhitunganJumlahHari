@@ -5,6 +5,8 @@
  */
 package latihan3_maulana_5e;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import javax.swing.JOptionPane;
 
 /**
@@ -40,7 +42,7 @@ public class PerhitunganJumlahHari extends javax.swing.JFrame {
         jumlahLabel = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         BtnHitung = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BtnSimpan = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -124,8 +126,13 @@ public class PerhitunganJumlahHari extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton2.setText("Simpan");
+        BtnSimpan.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnSimpan.setText("Simpan");
+        BtnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSimpanActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setText("Hapus");
@@ -144,7 +151,7 @@ public class PerhitunganJumlahHari extends javax.swing.JFrame {
                     .addComponent(BtnHitung, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                    .addComponent(BtnSimpan, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -154,7 +161,7 @@ public class PerhitunganJumlahHari extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnHitung)
-                    .addComponent(jButton2))
+                    .addComponent(BtnSimpan))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
@@ -236,6 +243,18 @@ public class PerhitunganJumlahHari extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_BtnHitungActionPerformed
 
+    private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
+        // TODO add your handling code here:
+        try{
+            BufferedWriter out = new BufferedWriter(new FileWriter("jumlahhari.txt"));
+            out.write(jumlahLabel.getText());
+            JOptionPane.showMessageDialog(null, "Berhasil Disimpan dalam File");
+            out.close();
+        }catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+        }
+    }//GEN-LAST:event_BtnSimpanActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -273,8 +292,8 @@ public class PerhitunganJumlahHari extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnHitung;
+    private javax.swing.JButton BtnSimpan;
     private javax.swing.JComboBox<String> bulanComboBox;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
